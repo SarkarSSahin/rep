@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Designer Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --accent: #8b5cf6;
+      --accent-soft: rgba(139, 92, 246, 0.18);
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --border: rgba(148, 163, 184, 0.35);
+      --radius-lg: 1.5rem;
+      --radius-full: 999px;
+      --transition: 220ms ease-out;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.75);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top, #1f2937 0, #020617 45%, #020617 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout */
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 4rem;
+    }
+
+    /* Glassy card */
+    .glass {
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.82));
+      border-radius: 2rem;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      position: relative;
+      isolation: isolate;
+      backdrop-filter: blur(22px);
+    }
+
+    /* Top gradient glow */
+    .glass::before {
+      content: "";
+      position: absolute;
+      inset: -30%;
+      opacity: 0.28;
+      background: radial-gradient(circle at 0% 0%, rgba(129, 140, 248, 0.7), transparent 55%),
+                  radial-gradient(circle at 100% 0%, rgba(236, 72, 153, 0.6), transparent 55%);
+      z-index: -1;
+    }
+
+    /* Header/Nav */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 1.75rem 0.5rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 30% 0%, rgba(248, 250, 252, 0.25), transparent 60%);
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .logo-text {
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      position: relative;
+      padding-bottom: 0.25rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #818cf8, #ec4899, #f97316);
+      transition: width 200ms ease-out;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .nav-tag {
+      padding: 0.25rem 0.75rem;
+      font-size: 0.7rem;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .btn-primary {
+      padding: 0.5rem 1.1rem;
+      border-radius: var(--radius-full);
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 500;
+      background: linear-gradient(120deg, #6366f1, #8b5cf6, #ec4899);
+      background-size: 200% 200%;
+      color: white;
+      box-shadow: 0 15px 30px rgba(79, 70, 229, 0.5);
+      transition: transform var(--transition), box-shadow var(--transition), background-position 300ms ease-out;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px) translateZ(0);
+      background-position: 100% 0;
+      box-shadow: 0 20px 40px rgba(79, 70, 229, 0.7);
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
+      gap: 2.5rem;
+      padding: 1.5rem 1.75rem 2.25rem;
+      align-items: center;
+    }
+
+    .hero-left {
+      padding-right: 1rem;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.25rem 0.7rem 0.25rem 0.25rem;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.8);
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .eyebrow-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0%, #f97316, transparent 60%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.55rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 4vw, 3.1rem);
+      line-height: 1.05;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, #a855f7, #ec4899, #eab308);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.97rem;
+      color: var(--muted);
+      max-width: 32rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-ghost {
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 0.86rem;
+      cursor: pointer;
+      background: rgba(15, 23, 42, 0.7);
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: border-color var(--transition), color var(--transition), background var(--transition), transform var(--transition);
+    }
+
+    .btn-ghost:hover {
+      color: var(--text);
+      border-color: rgba(148, 163, 184, 0.9);
+      background: rgba(15, 23, 42, 0.95);
+      transform: translateY(-1px);
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-tags span {
+      padding: 0.25rem 0.7rem;
+      border-radius: var(--radius-full);
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    /* Hero right (pseudo 3D card) */
+    .hero-right {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-orbit {
+      position: relative;
+      width: min(100%, 380px);
+      aspect-ratio: 4 / 5;
+      border-radius: 2.5rem;
+      background: radial-gradient(circle at 20% 0%, rgba(248, 250, 252, 0.18), transparent 60%),
+                  radial-gradient(circle at 80% 100%, rgba(129, 140, 248, 0.18), transparent 60%),
+                  linear-gradient(145deg, #020617, #020617);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      overflow: hidden;
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.9);
+      padding: 1.4rem;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 1rem;
+    }
+
+    .orbit-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .orbit-pill {
+      padding: 0.25rem 0.7rem;
+      font-size: 0.72rem;
+      border-radius: var(--radius-full);
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--muted);
+    }
+
+    .orbit-dots {
+      display: flex;
+      gap: 0.25rem;
+    }
+
+    .orbit-dots span {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.7);
+    }
+
+    .orbit-main {
+      display: grid;
+      grid-template-columns: 1.1fr 1.2fr;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .orbit-avatar {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      border-radius: 1.5rem;
+      background: radial-gradient(circle at 20% 0%, #a855f7, #0f172a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+    }
+
+    .orbit-avatar::after {
+      content: "DESIGN";
+      position: absolute;
+      inset: auto 0 12%;
+      text-align: center;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.35em;
+      color: rgba(248, 250, 252, 0.6);
+    }
+
+    .orbit-avatar-circle {
+      width: 70%;
+      aspect-ratio: 1 / 1;
+      border-radius: 999px;
+      border: 1px solid rgba(248, 250, 252, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: rgba(248, 250, 252, 0.8);
+      text-align: center;
+      padding: 0.8rem;
+    }
+
+    .orbit-info {
+      font-size: 0.8rem;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .orbit-metric-row {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .orbit-metric {
+      flex: 1 1 45%;
+      padding: 0.5rem 0.65rem;
+      border-radius: 0.9rem;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      display: grid;
+      gap: 0.15rem;
+    }
+
+    .orbit-metric-label {
+      font-size: 0.64rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: rgba(148, 163, 184, 0.9);
+    }
+
+    .orbit-metric-value {
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: #f9fafb;
+    }
+
+    .orbit-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      color: var(--muted);
+      border-top: 1px dashed rgba(148, 163, 184, 0.4);
+      padding-top: 0.6rem;
+    }
+
+    .orbit-status-pill {
+      padding: 0.2rem 0.7rem;
+      border-radius: var(--radius-full);
+      background: rgba(22, 163, 74, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.4);
+      color: rgba(74, 222, 128, 0.9);
+      font-size: 0.7rem;
+    }
+
+    /* Sections wrapper */
+    .sections {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+      gap: 2rem;
+      padding: 0 1.75rem 1.75rem;
+    }
+
+    .section {
+      margin-top: 1.5rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .section-sub {
+      font-size: 0.8rem;
+      color: rgba(148, 163, 184, 0.9);
+    }
+
+    /* Portfolio grid */
+    .grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .project-card {
+      position: relative;
+      border-radius: 1.2rem;
+      overflow: hidden;
+      background: radial-gradient(circle at 0 0, rgba(15, 23, 42, 0.9), #020617);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      cursor: pointer;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition), background var(--transition), translate var(--transition);
+      padding: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      inset: -50%;
+      background: radial-gradient(circle at 15% 0, rgba(129, 140, 248, 0.45), transparent 55%);
+      opacity: 0;
+      transition: opacity var(--transition);
+      pointer-events: none;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 35px rgba(15, 23, 42, 0.85);
+      border-color: rgba(129, 140, 248, 0.7);
+    }
+
+    .project-card:hover::before {
+      opacity: 1;
+    }
+
+    .project-thumb {
+      border-radius: 0.9rem;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      padding: 0.75rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      background: radial-gradient(circle at 0 0, rgba(15, 23, 42, 0.95), #020617);
+      min-height: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.35rem;
+    }
+
+    .project-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: rgba(148, 163, 184, 0.9);
+    }
+
+    .project-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .project-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.3rem;
+    }
+
+    .pill {
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .project-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.76rem;
+      color: rgba(196, 181, 253, 0.9);
+    }
+
+    /* About + skills card */
+    .about-card {
+      border-radius: 1.25rem;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: radial-gradient(circle at 100% 0, rgba(236, 72, 153, 0.18), transparent 55%),
+                  rgba(15, 23, 42, 0.9);
+      padding: 1rem;
+      display: grid;
+      gap: 0.75rem;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .about-card p {
+      line-height: 1.7;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .chip {
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 0.75rem;
+    }
+
+    .mini-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: rgba(148, 163, 184, 0.9);
+    }
+
+    /* Contact / sidebar */
+    .contact-card {
+      border-radius: 1.25rem;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: radial-gradient(circle at 0 0, rgba(129, 140, 248, 0.3), transparent 55%),
+                  rgba(15, 23, 42, 0.95);
+      padding: 1rem;
+      display: grid;
+      gap: 0.85rem;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .contact-row {
+      display: grid;
+      gap: 0.4rem;
+    }
+
+    .contact-field {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 0.6rem;
+      border-radius: 0.8rem;
+      border: 1px dashed rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.85);
+      font-size: 0.8rem;
+    }
+
+    .social-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.3rem;
+    }
+
+    .social-link {
+      padding: 0.28rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 0.75rem;
+      color: rgba(196, 181, 253, 0.9);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .availability-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(52, 211, 153, 0.7);
+      background: rgba(16, 185, 129, 0.16);
+      font-size: 0.72rem;
+      color: rgba(110, 231, 183, 0.95);
+    }
+
+    .footer {
+      padding: 0 1.75rem 1.5rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .footer a {
+      color: rgba(196, 181, 253, 0.9);
+      font-size: 0.75rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .glass {
+        border-radius: 1.5rem;
+      }
+
+      .hero,
+      .sections {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding-top: 1rem;
+      }
+
+      .hero-left {
+        padding-right: 0;
+        order: 2;
+      }
+
+      .hero-right {
+        order: 1;
+      }
+
+      .nav {
+        padding-inline: 1.25rem;
+        gap: 0.75rem;
+      }
+
+      .nav-links {
+        display: none; /* simple: hide links on small screens */
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding-inline: 1rem;
+      }
+
+      .hero {
+        padding-inline: 1.2rem;
+      }
+
+      .sections,
+      .footer {
+        padding-inline: 1.2rem;
+      }
+
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="glass">
+      <!-- NAV -->
+      <header class="nav">
+        <div class="logo">
+          <div class="logo-mark">D</div>
+          <div class="logo-text">Designer Studio</div>
+        </div>
+        <nav class="nav-links">
+          <a href="#work">Work</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="nav-cta">
+          <span class="nav-tag">Portfolio · 2025</span>
+          <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+            Let’s work together →
+          </button>
+        </div>
+      </header>
+
+      <!-- HERO -->
+      <section class="hero" id="top">
+        <div class="hero-left">
+          <div class="eyebrow">
+            <span class="eyebrow-dot">★</span>
+            Selected digital designer crafting interfaces & brands.
+          </div>
+          <h1 class="hero-title">
+            I design <span>minimal, bold</span> digital experiences.
+          </h1>
+          <p class="hero-subtitle">
+            A product & visual designer focused on clean interfaces, strong typography, and design systems that scale across web & mobile.
+          </p>
+          <div class="hero-actions">
+            <button class="btn-primary" onclick="document.getElementById('work').scrollIntoView({behavior: 'smooth'})">
+              View selected work
+            </button>
+            <button class="btn-ghost" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
+              Download resume ⤓
+            </button>
+          </div>
+          <div class="hero-tags">
+            <span>Product Design</span>
+            <span>UI / UX</span>
+            <span>Brand Systems</span>
+            <span>Design Systems</span>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="hero-orbit">
+            <div class="orbit-header">
+              <span class="orbit-pill">Portfolio snapshot</span>
+              <div class="orbit-dots">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="orbit-main">
+              <div class="orbit-avatar">
+                <div class="orbit-avatar-circle">
+                  Your photo or a logo here. Keep it simple & bold.
+                </div>
+              </div>
+              <div class="orbit-info">
+                <div>
+                  <div class="mini-title">Focus</div>
+                  <p>Product design, creative direction, and visual systems for SaaS, fintech, and consumer brands.</p>
+                </div>
+                <div class="orbit-metric-row">
+                  <div class="orbit-metric">
+                    <span class="orbit-metric-label">Experience</span>
+                    <span class="orbit-metric-value">5+ years</span>
+                  </div>
+                  <div class="orbit-metric">
+                    <span class="orbit-metric-label">Projects shipped</span>
+                    <span class="orbit-metric-value">40+</span>
+                  </div>
+                </div>
+                <div class="orbit-metric-row">
+                  <div class="orbit-metric">
+                    <span class="orbit-metric-label">Tools</span>
+                    <span class="orbit-metric-value">Figma, Webflow, Framer</span>
+                  </div>
+                  <div class="orbit-metric">
+                    <span class="orbit-metric-label">Based in</span>
+                    <span class="orbit-metric-value">Your city, Globe</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <footer class="orbit-footer">
+              <span>Currently designing digital products for startups & brands worldwide.</span>
+              <span class="orbit-status-pill">Available for 1–2 new projects</span>
+            </footer>
+          </div>
+        </div>
+      </section>
+
+      <!-- MAIN SECTIONS -->
+      <div class="sections">
+        <!-- Left column: Work + About -->
+        <div>
+          <!-- Work -->
+          <section class="section" id="work">
+            <div class="section-header">
+              <h2 class="section-title">Selected work</h2>
+              <span class="section-sub">Case studies & product explorations</span>
+            </div>
+            <div class="grid grid-2">
+              <!-- Project 1 -->
+              <article class="project-card">
+                <div class="project-thumb">
+                  <div class="project-label">Case Study · SaaS</div>
+                  <div class="project-title">Analytics dashboard for a growth team</div>
+                  <div class="pill-row">
+                    <span class="pill">User flows</span>
+                    <span class="pill">Design system</span>
+                    <span class="pill">Data viz</span>
+                  </div>
+                  <div class="project-meta">
+                    <span>2024</span>
+                    <span>Product · Web</span>
+                  </div>
+                </div>
+                <div class="project-footer">
+                  <span>Improved key workflows for marketers tracking acquisition and retention metrics.</span>
+                  <a class="project-link" href="#" target="_blank">View case study ↗</a>
+                </div>
+              </article>
+
+              <!-- Project 2 -->
+              <article class="project-card">
+                <div class="project-thumb">
+                  <div class="project-label">Brand & Web</div>
+                  <div class="project-title">Minimal brand & site for a design studio</div>
+                  <div class="pill-row">
+                    <span class="pill">Art direction</span>
+                    <span class="pill">Logo</span>
+                    <span class="pill">Web design</span>
+                  </div>
+                  <div class="project-meta">
+                    <span>2023</span>
+                    <span>Brand · Website</span>
+                  </div>
+                </div>
+                <div class="project-footer">
+                  <span>A bold visual identity with a flexible grid-based layout for editorial content.</span>
+                  <a class="project-link" href="#" target="_blank">View project ↗</a>
+                </div>
+              </article>
+
+              <!-- Project 3 -->
+              <article class="project-card">
+                <div class="project-thumb">
+                  <div class="project-label">Mobile product</div>
+                  <div class="project-title">Finance app for personal budgeting</div>
+                  <div class="pill-row">
+                    <span class="pill">UX flows</span>
+                    <span class="pill">UI design</span>
+                    <span class="pill">Design system</span>
+                  </div>
+                  <div class="project-meta">
+                    <span>2022</span>
+                    <span>iOS · Android</span>
+                  </div>
+                </div>
+                <div class="project-footer">
+                  <span>Created a calm, friendly interface to make money management feel approachable.</span>
+                  <a class="project-link" href="#" target="_blank">View prototype ↗</a>
+                </div>
+              </article>
+
+              <!-- Project 4 -->
+              <article class="project-card">
+                <div class="project-thumb">
+                  <div class="project-label">Experimental</div>
+                  <div class="project-title">Interactive landing page explorations</div>
+                  <div class="pill-row">
+                    <span class="pill">Motion</span>
+                    <span class="pill">Microcopy</span>
+                    <span class="pill">Web</span>
+                  </div>
+                  <div class="project-meta">
+                    <span>2021 — Now</span>
+                    <span>Web · Concept</span>
+                  </div>
+                </div>
+                <div class="project-footer">
+                  <span>Concepts exploring motion, storytelling, and layout beyond standard templates.</span>
+                  <a class="project-link" href="#" target="_blank">View gallery ↗</a>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- About -->
+          <section class="section" id="about">
+            <div class="section-header">
+              <h2 class="section-title">About</h2>
+              <span class="section-sub">Who I am & how I work</span>
+            </div>
+            <div class="about-card">
+              <p>
+                I’m a designer who believes in clarity, pace, and detail. My work combines strong grids, thoughtful typography, and subtle motion to create interfaces that feel simple, but considered.
+              </p>
+              <div>
+                <div class="mini-title">Strengths</div>
+                <div class="chip-row">
+                  <span class="chip">Design systems & tokens</span>
+                  <span class="chip">Cross-platform consistency</span>
+                  <span class="chip">Data-heavy UIs</span>
+                  <span class="chip">Creative direction</span>
+                </div>
+              </div>
+              <div>
+                <div class="mini-title">Tools</div>
+                <div class="chip-row">
+                  <span class="chip">Figma</span>
+                  <span class="chip">Adobe CC</span>
+                  <span class="chip">Webflow</span>
+                  <span class="chip">Framer</span>
+                  <span class="chip">Notion</span>
+                  <span class="chip">FigJam</span>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Right column: Contact / details -->
+        <aside class="section" id="contact">
+          <div class="section-header">
+            <h2 class="section-title">Contact</h2>
+            <span class="section-sub">Let’s build something</span>
+          </div>
+          <div class="contact-card">
+            <div>
+              <div class="availability-badge">
+                <span>●</span> Currently open for freelance & collaborations.
+              </div>
+            </div>
+
+            <div class="contact-row">
+              <div class="mini-title">Primary contact</div>
+              <div class="contact-field">
+                <span>Email</span>
+                <a href="mailto:hello@yourname.design">hello@yourname.design</a>
+              </div>
+              <div class="contact-field">
+                <span>Location</span>
+                <span>Your city · Remote friendly</span>
+              </div>
+            </div>
+
+            <div class="contact-row">
+              <div class="mini-title">Social & portfolio</div>
+              <div class="social-row">
+                <a class="social-link" href="#" target="_blank">Dribbble</a>
+                <a class="social-link" href="#" target="_blank">Behance</a>
+                <a class="social-link" href="#" target="_blank">LinkedIn</a>
+                <a class="social-link" href="#" target="_blank">Instagram</a>
+              </div>
+            </div>
+
+            <div class="contact-row">
+              <div class="mini-title">Project fit</div>
+              <p>
+                I’m a good fit for teams who care about polish, experimentation, and shipping consistently. If that sounds like you, share a short brief and timeline.
+              </p>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <span>© 2025 Your Name. Crafted with care.</span>
+        <span>Available for product design, brand systems, and web projects.</span>
+      </footer>
+    </div>
+  </main>
+</body>
+</html>
